@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoreImageDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9B7-jm-QZV">
+                                <rect key="frame" x="105" y="62" width="165" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="sWd-U2-2jq"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c8d-9T-IP5">
+                                <rect key="frame" x="105" y="241" width="165" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="aIr-Pw-XvW"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gm1-WS-p3H">
+                                <rect key="frame" x="128" y="20" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="Qje-0N-vyu"/>
+                                    <constraint firstAttribute="width" constant="114" id="p9Z-pX-NVp"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="amountValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="EEg-hq-j25"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgJ-ch-FHJ">
+                                <rect key="frame" x="280" y="17" width="87" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Y7O-NS-dV2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                <state key="normal" title="Photo Album"/>
+                                <connections>
+                                    <action selector="bringUpPhotoAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A1J-7Z-gAX"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LMf-fT-Vpe">
+                                <rect key="frame" x="105" y="417" width="165" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="QGO-1p-ou7"/>
+                                    <constraint firstAttribute="height" constant="128" id="Yrm-ip-GDo"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-br-bV5">
+                                <rect key="frame" x="22" y="16" width="76" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="bEO-Sr-TTn"/>
+                                    <constraint firstAttribute="height" constant="32" id="bEo-Gz-UfS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                <state key="normal" title="Save Photo"/>
+                                <connections>
+                                    <action selector="bringUpPhotoAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Mu-Qn-e74"/>
+                                    <action selector="savePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j1Q-sQ-Qx2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="c8d-9T-IP5" firstAttribute="top" secondItem="9B7-jm-QZV" secondAttribute="bottom" constant="51" id="2qp-IK-BKq"/>
+                            <constraint firstItem="1gO-br-bV5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="16" id="3R2-La-4GW"/>
+                            <constraint firstItem="Gm1-WS-p3H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5mg-89-itE"/>
+                            <constraint firstItem="PgJ-ch-FHJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="17" id="7Yg-3p-v8m"/>
+                            <constraint firstItem="PgJ-ch-FHJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="AHZ-iW-D7f"/>
+                            <constraint firstItem="9B7-jm-QZV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="GHX-LZ-iPg"/>
+                            <constraint firstItem="c8d-9T-IP5" firstAttribute="leading" secondItem="9B7-jm-QZV" secondAttribute="leading" id="M77-N4-zcj"/>
+                            <constraint firstItem="LMf-fT-Vpe" firstAttribute="trailing" secondItem="c8d-9T-IP5" secondAttribute="trailing" id="Miz-bb-Zt0"/>
+                            <constraint firstItem="9B7-jm-QZV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q6J-jx-AKt"/>
+                            <constraint firstItem="1gO-br-bV5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="QQ0-KD-AN0"/>
+                            <constraint firstItem="c8d-9T-IP5" firstAttribute="trailing" secondItem="9B7-jm-QZV" secondAttribute="trailing" id="Uak-XZ-Ncb"/>
+                            <constraint firstItem="LMf-fT-Vpe" firstAttribute="leading" secondItem="c8d-9T-IP5" secondAttribute="leading" id="YFF-la-I5P"/>
+                            <constraint firstItem="c8d-9T-IP5" firstAttribute="top" secondItem="9B7-jm-QZV" secondAttribute="bottom" constant="51" id="adZ-7v-7nh"/>
+                            <constraint firstItem="Gm1-WS-p3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="dFT-Zc-O2X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PgJ-ch-FHJ" secondAttribute="trailing" constant="8" id="l0P-8d-9e9"/>
+                            <constraint firstItem="LMf-fT-Vpe" firstAttribute="top" secondItem="c8d-9T-IP5" secondAttribute="bottom" constant="48" id="sg3-JN-Kkt"/>
+                            <constraint firstItem="Gm1-WS-p3H" firstAttribute="centerX" secondItem="9B7-jm-QZV" secondAttribute="centerX" id="w9x-rX-aiN"/>
+                            <constraint firstItem="9B7-jm-QZV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="105" id="yOx-N8-XQg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountSlider" destination="Gm1-WS-p3H" id="w2s-6Z-fFW"/>
+                        <outlet property="bloomImageView" destination="LMf-fT-Vpe" id="95o-T5-gKv"/>
+                        <outlet property="imageView" destination="9B7-jm-QZV" id="bv6-ZO-bh4"/>
+                        <outlet property="sepiaImageView" destination="c8d-9T-IP5" id="qUE-sf-wgr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+</document>
