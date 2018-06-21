@@ -66,12 +66,54 @@ class ViewController: UIViewController,UINavigationControllerDelegate {
         
     }
     
-    
-    @IBAction func savePhoto(_ sender: Any) {
+    func savePictureToAlbum() {
         
         let softwareContext = CIContext(options: [kCIContextUseSoftwareRenderer: true])
         let cgimg = context.createCGImage(outPutImage!, from: outPutImage!.extent)
-       
+        let image = UIImage(cgImage: cgimg!)
+        
+        PHPhotoLibrary.shared().performChanges({
+            let creationRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            var addAssetRequest = PHAssetCollectionChangeRequest()
+            
+            //create new album for the image
+            let predicate = NSPredicate(format: "%K == %@", "localizedTitle", "Core Image Fun")
+            let options = PHFetchOptions()
+            options.predicate = predicate
+            
+            if let album = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: options).firstObject {
+                addAssetRequest = PHAssetCollectionChangeRequest(for: album)!
+                print("Found album!!!")
+            }else {
+                addAssetRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: "Core Image Fun")
+                print("Creating Album!!!")
+            }
+            addAssetRequest.addAssets([creationRequest.placeholderForCreatedAsset!] as NSArray)
+            
+        }, completionHandler: { success, error in
+            
+            if !success {
+                print("Unsuccessful save: \(error?.localizedDescription)")
+            } else {
+                print("SAVED!")
+            }
+        })
+    }
+    
+    @IBAction func savePhoto(_ sender: Any) {
+        
+        if PHPhotoLibrary.authorizationStatus() == .authorized {
+            self.savePictureToAlbum()
+        } else {
+            PHPhotoLibrary.requestAuthorization({ (status) in
+                if status == .authorized {
+                    self.savePictureToAlbum()
+                }
+            })
+        }
+        
+        
+    
     }
     
     func sepiaFilter(_ input: CIImage, intensity: Double) -> CIImage?
@@ -104,4 +146,6 @@ extension ViewController:UIImagePickerControllerDelegate {
         self.amountValueChanged(amountSlider)
     }
 }
+
+
 
